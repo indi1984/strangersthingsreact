@@ -28,3 +28,22 @@ export const registerUser = async (user) => {
     console.error(error);
   }
 };
+
+
+export const registeredUser = async (user) => {
+  try {
+    const response = await fetch(`${BASE_URL}/users/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        user,
+      }),
+    });
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error(error);
+  }
+};

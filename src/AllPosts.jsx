@@ -3,9 +3,7 @@ import { fetchPosts } from './ajax-requests/requests'
 
 
 const AllPosts = (props) => {
-  const [postResults, setPostResults] = useState({});
-
-
+ const [postResults, setPostResults] = useState({});
 
  useEffect(() => {
   const posts = async () => {
@@ -16,8 +14,10 @@ const AllPosts = (props) => {
       console.error(`An error has occurred: ${error}`);
     }
   };
-  posts();
+  // posts();
   },[]) 
+
+  console.log(postResults);
 
   return (
     <h3>ALL POSTS</h3>
