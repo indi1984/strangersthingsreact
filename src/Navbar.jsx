@@ -3,6 +3,8 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
+import { LinkContainer } from 'react-router-bootstrap';
+
 
 
 function NavigationBar() {
@@ -13,8 +15,12 @@ function NavigationBar() {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#features">Features</Nav.Link>
-            <Nav.Link href="#pricing">Pricing</Nav.Link>
+            <LinkContainer to="/">
+              <Nav.Link href="#features">Home</Nav.Link>
+            </LinkContainer>
+            <LinkContainer to="/myposts">
+              <Nav.Link>My Posts</Nav.Link>
+            </LinkContainer>
             <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
@@ -28,9 +34,11 @@ function NavigationBar() {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Nav.Link eventKey={2} href="#memes">
-              Log In
-            </Nav.Link>
+            <LinkContainer to="/register">
+              <Nav.Link>
+                Register
+              </Nav.Link>
+            </LinkContainer>
           </Nav>
         </Navbar.Collapse>
       </Container>
