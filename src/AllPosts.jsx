@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import { fetchPosts } from './ajax-requests/requests'
 
 
-function AllPosts() {
+const AllPosts = (props) => {
+  const [postResults, setPostResults] = useState({});
+
+
+
+ useEffect(() => {
+  const posts = async () => {
+    try {
+      const results = await fetchPosts();
+      setPostResults(results);
+    } catch (error) {
+      console.error(`An error has occurred: ${error}`);
+    }
+  };
+  posts();
+  },[]) 
+
   return (
-    <h1>HELLO ALL POSTS</h1>
-  );
+    <h3>ALL POSTS</h3>
+  ); 
 };
 
 export default AllPosts;

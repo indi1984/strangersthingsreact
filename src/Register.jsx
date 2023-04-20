@@ -1,7 +1,11 @@
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import React, { useState } from 'react';
 import { registerUser } from './ajax-requests/requests';
 
-function Register({ setToken }) {
+function Register(props) {
+  const { setToken } = props;
+  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
@@ -9,36 +13,40 @@ function Register({ setToken }) {
   async function handleSubmit(event) {
     event.preventDefault();
     const user = {username, password};
-    /*
-      {
-        username: 'username value',
-        password: 'password value'
-      }
-    */
-   
     const results = await registerUser(user);
     
     if (results.success) {
       setToken(results.data.token);
-      window.localStorage.setItem("token", results.data.token)
-    }
-    
-  }
+      window.localStorage.setItem("token", results.data.token) 
+    } 
+  };
   
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        type='text'
-        placeholder='Enter Username'
-        onChange={(event) => setUsername(event.target.value)}
-      />
-      <input 
-        type='password'
-        placeholder='Enter Password'
-        onChange={(event) => setPassword(event.target.value)}
-      />
-      <button type='submit'>Submit</button>
-    </form>
+    <div id='container'>
+      <Form onSubmit={handleSubmit} id="register-form">
+        <Form.Group 
+          className="mb-4" 
+          controlId="text" 
+          onChange={(event) => setUsername(event.target.value)}
+        >
+          <Form.Label>Username</Form.Label>
+          <Form.Control type="text" placeholder="Enter Username..." />
+        </Form.Group>
+
+        <Form.Group 
+          className="mb-4" 
+          controlId="formBasicPassword"
+          onChange={(event) => setPassword(event.target.value)}
+        >
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" placeholder="Enter Password..." />
+        </Form.Group>
+        
+        <Button variant="primary" type="submit">
+          Register
+        </Button>
+      </Form>
+    </div>
   )
 }
 
