@@ -1,7 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Badge from 'react-bootstrap/Badge';
+import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
-import { registerUser } from './ajax-requests/requests';
+import { registeredUser } from './ajax-requests/requests';
+import Register from './Register';
 
 function Login(props) {
   const { token } = props;
@@ -12,7 +15,9 @@ function Login(props) {
   
   async function handleSubmit(event) {
     event.preventDefault();
-
+    const user = {username, password};
+    const result = registeredUser(user);
+    console.log(result)
   };
   
   return (
@@ -36,9 +41,12 @@ function Login(props) {
           <Form.Control type="password" placeholder="Enter Password..." />
         </Form.Group>
         
-        <Button variant="primary" type="submit">
+        <Button size='lg' variant="primary" type="submit">
           Login
         </Button>
+        <Link className='cards__item__link' to="/register"><Badge pill="true" bg="info">Register</Badge>{' '}</Link>
+
+
       </Form>
     </div>
   )

@@ -32,7 +32,7 @@ export const registerUser = async (user) => {
 
 export const registeredUser = async (user) => {
   try {
-    const response = await fetch(`${BASE_URL}/users/register`, {
+    const response = await fetch(`${BASE_URL}/users/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

@@ -3,24 +3,36 @@ import { fetchPosts } from './ajax-requests/requests'
 
 
 const AllPosts = (props) => {
- const [postResults, setPostResults] = useState({});
+ const [postResults, setPostResults] = useState([]);
 
- useEffect(() => {
-  const posts = async () => {
+  useEffect(() => {
+  const getPosts = async () => {
     try {
       const results = await fetchPosts();
-      setPostResults(results);
+      if (results.success) {
+        setPostResults(results.data.posts)
+      }
     } catch (error) {
       console.error(`An error has occurred: ${error}`);
     }
   };
-  // posts();
-  },[]) 
-
-  console.log(postResults);
+  getPosts();
+  }, [])
 
   return (
-    <h3>ALL POSTS</h3>
+    <ul>
+      {
+        postResults && postResults.map((post, index) => {
+          return (
+          <li key={index}>{post.title}
+            <ul>
+              <li key={post.id}>{post.description}</li>
+            </ul>
+          </li>
+          )
+        })
+      }
+    </ul>
   ); 
 };
 

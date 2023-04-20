@@ -31,9 +31,8 @@ function App() {
       {!token && (
       <Routes>
         <Route path="/" element={<AllPosts setToken={setToken}/>} />
-        {/* <Route path="/register" element={<Register setToken={setToken}/>} /> */}
+        <Route path="/register" element={<Register setToken={setToken}/>} />
         <Route path="/login" element={<Login token={token} setToken={setToken}/>} />
-
       </Routes>
       )}
 
