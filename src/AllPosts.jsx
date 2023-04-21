@@ -1,7 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts, deletePost } from './ajax-requests/requests'
-import Button from 'react-bootstrap/Button';
-import {Container, Row } from 'react-bootstrap';
+import {Container, Row, Button } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import CreatePost from './CreatePost'
 import Badge from 'react-bootstrap/Badge';
@@ -27,7 +26,7 @@ const AllPosts = (props) => {
   }, [postResults, token])
 
   return (
-    <>
+    <Fragment>
       <Container fluid>
         <Row>
           {token && (
@@ -43,7 +42,7 @@ const AllPosts = (props) => {
                 {post.isAuthor
                 ? <Card bg="light" border="success" style={{ width: '100vh' }}>     
                     <Card.Body>
-                      <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="success" text="light">{post.author.username}</Badge></Card.Title>
+                      <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="success" text="light">{post.author.username}</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>{post.price}</Card.Text>
                       <Button variant="primary" className="float-end">Go to Post</Button>
@@ -55,7 +54,7 @@ const AllPosts = (props) => {
                 </Card>
                 : <Card bg="light" border="dark" style={{ width: '100vh' }}>
                     <Card.Body>
-                      <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="dark" text="light">{post.author.username}</Badge></Card.Title>
+                      <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="dark" text="light">{post.author.username}</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>{post.price}</Card.Text>
                     <Button variant="primary" className="float-end">Go to Post</Button>
@@ -68,7 +67,7 @@ const AllPosts = (props) => {
             })
           }
       </Container>
-    </>  
+    </Fragment>  
   ); 
 };
 
