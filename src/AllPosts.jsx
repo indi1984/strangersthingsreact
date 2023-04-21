@@ -1,10 +1,11 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { fetchPosts } from './ajax-requests/requests'
+import { fetchPosts, deletePost } from './ajax-requests/requests'
 import Button from 'react-bootstrap/Button';
 import {Container, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import CreatePost from './CreatePost'
-import DeletePost from './DeletePost';
+import Badge from 'react-bootstrap/Badge';
+
 
 
 const AllPosts = (props) => {
@@ -15,8 +16,6 @@ const AllPosts = (props) => {
   const getPosts = async (token) => {
     try {
       const results = await fetchPosts(token);
-      console.log(results)
-      console.log(token)
       if (results.success) {
         setPostResults(results.data.posts)
       }
@@ -25,7 +24,7 @@ const AllPosts = (props) => {
     }
   };
   getPosts(token);
-  }, [token])
+  }, [postResults, token])
 
   return (
     <>
@@ -41,16 +40,24 @@ const AllPosts = (props) => {
             return ( 
               <Fragment key={post._id}>
               <Row>            
-                <Card style={{ width: '100vh' }}>
+                {post.isAuthor
+                ? <Card bg="light" border="success" style={{ width: '100vh' }}>     
                     <Card.Body>
-                      <Card.Title>{post.title}</Card.Title>
+                      <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="success" text="light">{post.author.username}</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
-                      {post.isAuthor &&
-                      <DeletePost token={token} postId={post._id} />
-                      } 
+                      <Card.Text>{post.price}</Card.Text>
+                      <Button variant="danger" size="sm" className="float-start" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>
                     <Button variant="primary" className="float-end">Go to Post</Button>
                     </Card.Body>
                 </Card>
+                : <Card bg="light" border="dark" style={{ width: '100vh' }}>
+                    <Card.Body>
+                      <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="dark" text="light">{post.author.username}</Badge></Card.Title>
+                      <Card.Text>{post.description}</Card.Text>
+                      <Card.Text>{post.price}</Card.Text>
+                    <Button variant="primary" className="float-end">Go to Post</Button>
+                    </Card.Body>
+                </Card>}
               </Row>
               <br />
               </Fragment>
