@@ -26,7 +26,7 @@ const AllPosts = (props) => {
 
   return (
     <>
-      <Container>
+      <Container fluid>
         <Row>
           {token && (
           <CreatePost token={token} fetchPosts={fetchPosts}/>
@@ -36,16 +36,18 @@ const AllPosts = (props) => {
         <br />
         <Row>
           {postResults && postResults.map((post, index) => {
-            return (
-              <Card key={index} style={{ width: '18rem' }}>
-                  <Card.Body>
-                    <Card.Title>{post.title}</Card.Title>
-                    <Card.Text>
-                      {post.description}
-                    </Card.Text>
-                  <Button variant="primary">Go to Post</Button>
-                  </Card.Body>
-              </Card>
+            return ( 
+                  <Col>            
+                    <Card key={index} style={{ width: '18rem' }}>
+                        <Card.Body>
+                          <Card.Title>{post.title}</Card.Title>
+                          <Card.Text>
+                            {post.description}
+                          </Card.Text>
+                        <Button variant="primary">Go to Post</Button>
+                        </Card.Body>
+                    </Card>
+                  </Col>
               )
             })
           }
