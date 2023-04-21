@@ -30,9 +30,10 @@ function App() {
 
       {!token && (
       <Routes>
-        <Route path="/" element={<AllPosts setToken={setToken} token={token} />} />
+        <Route path="/allposts" element={<AllPosts setToken={setToken} token={token} />} />
         <Route path="/register" element={<Register setToken={setToken}/>} />
         <Route path="/login" element={<Login token={token} setToken={setToken}/>} />
+        <Route path="*" element={<Navigate to="/allposts" />} />
       </Routes>
       )}
 
