@@ -46,9 +46,12 @@ const AllPosts = (props) => {
                       <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="success" text="light">{post.author.username}</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>{post.price}</Card.Text>
-                      <Button variant="danger" size="sm" className="float-start" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>
-                    <Button variant="primary" className="float-end">Go to Post</Button>
+                      <Button variant="primary" className="float-end">Go to Post</Button>
+                      <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>                      
+                      
+
                     </Card.Body>
+                    
                 </Card>
                 : <Card bg="light" border="dark" style={{ width: '100vh' }}>
                     <Card.Body>
