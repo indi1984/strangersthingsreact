@@ -38,7 +38,8 @@ function App() {
 
       {token && (
       <Routes>
-        <Route path="/myposts" element={<MyPosts setToken={MyPosts}/>} />
+        <Route path="/allposts" element={<AllPosts setToken={setToken}/>} />
+        <Route path="/myposts" element={<MyPosts setToken={setToken}/>} />
         <Route path="*" element={<Navigate to="/myposts" />} />
       </Routes>
       )}

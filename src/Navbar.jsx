@@ -15,9 +15,11 @@ function NavigationBar(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            {token && (
-            <LinkContainer to="/myposts">
-              <Nav.Link>My Posts</Nav.Link>
+            
+
+            {/* {!token && (
+            <LinkContainer to="/">
+              <Nav.Link>Home</Nav.Link>
             </LinkContainer>
             )}
 
@@ -25,8 +27,20 @@ function NavigationBar(props) {
             <LinkContainer to="/">
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
+            )} */}
+
+            {token && (
+            <LinkContainer to="/allposts">
+              <Nav.Link>All Posts</Nav.Link>
+            </LinkContainer>
             )}
 
+            {token && (
+            <LinkContainer to="/myposts">
+              <Nav.Link>My Posts</Nav.Link>
+            </LinkContainer>
+            )}
+            
             {token && (
             <LinkContainer to="/mymessages">
               <Nav.Link>My Messages</Nav.Link>
@@ -55,7 +69,7 @@ function NavigationBar(props) {
             </LinkContainer>
             )}
             {token && (
-            <LinkContainer to="/">
+            <LinkContainer to="/" onClick={() => {setToken(null)}}>
               <Nav.Link>
                 Log Out
               </Nav.Link>

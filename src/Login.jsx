@@ -4,10 +4,9 @@ import Badge from 'react-bootstrap/Badge';
 import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
 import { registeredUser } from './ajax-requests/requests';
-import Register from './Register';
 
 function Login(props) {
-  const { token } = props;
+  const { setToken } = props;
   
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -16,8 +15,12 @@ function Login(props) {
   async function handleSubmit(event) {
     event.preventDefault();
     const user = {username, password};
-    const result = registeredUser(user);
-    console.log(result)
+    const results = await registeredUser(user);
+
+    if (results.success) {
+      setToken(results.data.token);
+      window.localStorage.setItem("token", results.data.token) 
+    } 
   };
   
   return (
