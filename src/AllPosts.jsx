@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { fetchPosts } from './ajax-requests/requests'
 import Button from 'react-bootstrap/Button';
-import {Container, Row, Col } from 'react-bootstrap';
+import {Container, Row } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
 import CreatePost from './CreatePost'
 

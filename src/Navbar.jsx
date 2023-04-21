@@ -9,7 +9,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 function NavigationBar(props) {
   const {token, setToken} = props;
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+    <Navbar sticky="top" collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container>
         <Navbar.Brand>Stranger's Things</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
