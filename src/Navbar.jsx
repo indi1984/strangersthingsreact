@@ -65,7 +65,7 @@ function NavigationBar(props) {
             )}
 
             {token && (
-            <LinkContainer to="/" onClick={() => {setToken(null)}}>
+            <LinkContainer to="/" onClick={() => {setToken(localStorage.clear())}}>
               <Nav.Link>
                 Log Out
               </Nav.Link>
