@@ -16,18 +16,13 @@ function NavigationBar(props) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             
-
-            {/* {!token && (
-            <LinkContainer to="/">
-              <Nav.Link>Home</Nav.Link>
-            </LinkContainer>
-            )}
-
             {!token && (
             <LinkContainer to="/">
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Link>
+                Home
+              </Nav.Link>
             </LinkContainer>
-            )} */}
+            )}
 
             {token && (
             <LinkContainer to="/allposts">
@@ -68,6 +63,7 @@ function NavigationBar(props) {
               </Nav.Link>
             </LinkContainer>
             )}
+
             {token && (
             <LinkContainer to="/" onClick={() => {setToken(null)}}>
               <Nav.Link>
