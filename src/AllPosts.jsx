@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { fetchPosts } from './ajax-requests/requests'
 import Button from 'react-bootstrap/Button';
+import {Container, Row, Col } from 'react-bootstrap';
 import Card from 'react-bootstrap/Card';
+import CreatePost from './CreatePost'
 
 
 const AllPosts = (props) => {
  const [postResults, setPostResults] = useState([]);
+ const { token } = props;
 
   useEffect(() => {
   const getPosts = async () => {
@@ -23,27 +26,31 @@ const AllPosts = (props) => {
 
   return (
     <>
-      {
-        postResults && postResults.map((post, index) => {
-          return (
-          // <li key={index}>{post.title}
-          //   <ul>
-          //     <li key={post.id}>{post.description}</li>
-          //   </ul>
-          // </li>
-          // 
-            <Card key={index} style={{ width: '18rem' }}>
-                <Card.Body>
-                  <Card.Title>{post.title}</Card.Title>
-                  <Card.Text>
-                    {post.description}
-                  </Card.Text>
-                <Button variant="primary">Go to Post</Button>
-                </Card.Body>
-            </Card>
-          )
-        })
-      }
+      <Container>
+        <Row>
+          {token && (
+          <CreatePost token={token} fetchPosts={fetchPosts}/>
+          )}
+        </Row>
+        <br />
+        <br />
+        <Row>
+          {postResults && postResults.map((post, index) => {
+            return (
+              <Card key={index} style={{ width: '18rem' }}>
+                  <Card.Body>
+                    <Card.Title>{post.title}</Card.Title>
+                    <Card.Text>
+                      {post.description}
+                    </Card.Text>
+                  <Button variant="primary">Go to Post</Button>
+                  </Card.Body>
+              </Card>
+              )
+            })
+          }
+        </Row>
+      </Container>
     </>  
   ); 
 };
