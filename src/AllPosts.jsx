@@ -29,7 +29,7 @@ const AllPosts = (props) => {
       <Container fluid>
         <Row>
           {token && (
-          <CreatePost token={token} fetchPosts={fetchPosts}/>
+          <CreatePost token={token} fetchPosts={fetchPosts} setPostResults={setPostResults} />
           )}
         </Row>
         <br />
@@ -37,17 +37,17 @@ const AllPosts = (props) => {
         <Row>
           {postResults && postResults.map((post, index) => {
             return ( 
-                  <Col>            
-                    <Card key={index} style={{ width: '18rem' }}>
-                        <Card.Body>
-                          <Card.Title>{post.title}</Card.Title>
-                          <Card.Text>
-                            {post.description}
-                          </Card.Text>
-                        <Button variant="primary">Go to Post</Button>
-                        </Card.Body>
-                    </Card>
-                  </Col>
+              <Col>            
+                <Card key={index} style={{ width: '18rem' }}>
+                    <Card.Body>
+                      <Card.Title>{post.title}</Card.Title>
+                      <Card.Text>
+                        {post.description}
+                      </Card.Text>
+                    <Button variant="primary">Go to Post</Button>
+                    </Card.Body>
+                </Card>
+              </Col>
               )
             })
           }

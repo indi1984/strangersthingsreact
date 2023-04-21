@@ -1,10 +1,10 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import{ makePost } from './ajax-requests/requests'
 
 
 function CreatePost(props) {
-  const { token, fetchPosts } = props;
+  const { token, fetchPosts, setPostResults } = props;
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -15,9 +15,9 @@ function CreatePost(props) {
     const post = {title, description, price};
     const results = await makePost(post, token);
     if (results.success) {
-      fetchPosts();
+      const newResults = await fetchPosts();
+      setPostResults(newResults.data.posts);
     }
-  
   };
 
   return (
