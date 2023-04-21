@@ -6,7 +6,6 @@ import CreatePost from './CreatePost'
 import Badge from 'react-bootstrap/Badge';
 
 
-
 const AllPosts = (props) => {
   const [postResults, setPostResults] = useState([]);
   const { token } = props;
@@ -47,11 +46,8 @@ const AllPosts = (props) => {
                       <Card.Text>{post.price}</Card.Text>
                       <Button variant="primary" className="float-end">Go to Post</Button>
                       <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>                      
-                      
-
-                    </Card.Body>
-                    
-                </Card>
+                    </Card.Body>   
+                  </Card>
                 : <Card bg="light" border="dark" style={{ width: '100vh' }}>
                     <Card.Body>
                       <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="dark" text="light">{post.author.username}</Badge></Card.Title>
