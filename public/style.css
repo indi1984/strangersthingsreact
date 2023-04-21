@@ -13,3 +13,10 @@
   flex-direction: column;
   align-items: center;
 }
+
+.container-fluid {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+}
