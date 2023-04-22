@@ -57,7 +57,6 @@ export const fetchPosts = async (token) => {
 };
 
 export const myData = async (token) => {
-
     try {
       const response = await fetch(`${BASE_URL}/users/me`, {
         headers: {
@@ -66,7 +65,6 @@ export const myData = async (token) => {
         },
       });
       const result = await response.json();
-      console.log(result);
       return result
     } catch (err) {
       console.error(err);

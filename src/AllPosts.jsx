@@ -1,9 +1,7 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts, deletePost } from './ajax-requests/requests'
-import {Container, Row, Button } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
+import {Container, Row, Button, Card, Badge } from 'react-bootstrap';
 import CreatePost from './CreatePost'
-import Badge from 'react-bootstrap/Badge';
 
 
 const AllPosts = (props) => {
@@ -11,17 +9,17 @@ const AllPosts = (props) => {
   const { token } = props;
 
   useEffect(() => {
-  const getPosts = async (token) => {
-    try {
-      const results = await fetchPosts(token);
-      if (results.success) {
-        setPostResults(results.data.posts)
+    const getPosts = async () => {
+      try {
+        const results = await fetchPosts(token);
+        if (results.success) {
+          setPostResults(results.data.posts)
+        }
+      } catch (error) {
+        console.error(`An error has occurred: ${error}`);
       }
-    } catch (error) {
-      console.error(`An error has occurred: ${error}`);
-    }
-  };
-  getPosts(token);
+    };
+    getPosts(token);
   }, [postResults, token])
 
   return (

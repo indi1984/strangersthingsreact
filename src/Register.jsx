@@ -1,7 +1,7 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import React, { useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
 import { registerUser } from './ajax-requests/requests';
+
 
 function Register(props) {
   const { setToken } = props;
@@ -9,12 +9,10 @@ function Register(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
-  
   async function handleSubmit(event) {
     event.preventDefault();
     const user = {username, password};
     const results = await registerUser(user);
-    
     if (results.success) {
       setToken(results.data.token);
       window.localStorage.setItem("token", results.data.token) 
@@ -47,7 +45,7 @@ function Register(props) {
         </Button>
       </Form>
     </div>
-  )
-}
+  );
+};
 
 export default Register;

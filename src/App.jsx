@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import React, { useState, useEffect } from 'react';
+import { Routes, Route, Navigate } from 'react-router-dom';
 import NavigationBar from './Navbar';
 import Footer from './Footer';
-import { Routes, Route, Navigate } from 'react-router-dom';
 import Register from './Register';
 import AllPosts from './AllPosts';
 import MyPosts from './MyPosts';

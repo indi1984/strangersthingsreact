@@ -1,35 +1,32 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { myData, deletePost } from './ajax-requests/requests'
-import {Container, Row, Button, Nav } from 'react-bootstrap';
-import Card from 'react-bootstrap/Card';
-import Badge from 'react-bootstrap/Badge';
-
+import {Container, Row, Button, Nav, Card, Badge } from 'react-bootstrap';
 
 
 const MyPosts = (props) => {
-  const [postResults, setPostResults] = useState([]);
+  const [myPostResults, setMyPostResults] = useState([]);
   const { token } = props;
-
+   
   useEffect(() => {
-  const getPosts = async (token) => {
-    try {
-      const results = await myData(token);
-      if (results.success) {
-        setPostResults(results.data.posts)
+    const getPosts = async () => {
+      try {
+        const results = await myData(token);
+        if (results.success) {
+          setMyPostResults(results.data.posts);
+        }
+      } catch (error) {
+        console.error(`An error has occurred: ${error}`);
       }
-    } catch (error) {
-      console.error(`An error has occurred: ${error}`);
-    }
-  };
-  getPosts(token);
-  }, [postResults, token])
+    };
+    getPosts(token)
+  }, [myPostResults, token])
 
   return (
     <Fragment>
       <Container fluid>
         <br />
         <br />
-        {postResults.map((post) => {
+        {myPostResults && myPostResults.map((post) => {
           return ( 
             post.active &&
             <Fragment key={post._id}>             
@@ -40,9 +37,8 @@ const MyPosts = (props) => {
                     <Card.Text>{post.description}</Card.Text>
                     <Card.Text>{post.price}</Card.Text>
                     <Button variant="primary" className="float-end">Go to Post</Button>
-                    <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>                      
+                    <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>
                   </Card.Body>
-
                   <Card.Header>
                     <Nav variant="tabs" defaultActiveKey="#first">
                       <Nav.Item>

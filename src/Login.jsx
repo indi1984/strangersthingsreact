@@ -1,9 +1,8 @@
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import Badge from 'react-bootstrap/Badge';
-import { Link } from 'react-router-dom';
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Button, Form, Badge } from 'react-bootstrap';
 import { registeredUser } from './ajax-requests/requests';
+
 
 function Login(props) {
   const { setToken } = props;
@@ -11,12 +10,10 @@ function Login(props) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
-  
   async function handleSubmit(event) {
     event.preventDefault();
     const user = {username, password};
     const results = await registeredUser(user);
-
     if (results.success) {
       setToken(results.data.token);
       window.localStorage.setItem("token", results.data.token) 
@@ -52,7 +49,7 @@ function Login(props) {
 
       </Form>
     </div>
-  )
-}
+  );
+};
 
 export default Login;
