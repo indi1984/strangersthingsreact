@@ -27,20 +27,20 @@ function App() {
   return (
     <div className="App">
       <NavigationBar token={token} setToken={setToken}/>
-
+      
       {!token && (
       <Routes>
-        <Route path="/allposts" element={<AllPosts setToken={setToken} token={token} />} />
+        <Route path="/allposts" element={<AllPosts setToken={setToken}/>} />
         <Route path="/register" element={<Register setToken={setToken}/>} />
-        <Route path="/login" element={<Login token={token} setToken={setToken}/>} />
+        <Route path="/login" element={<Login setToken={setToken}/>} />
         <Route path="*" element={<Navigate to="/allposts" />} />
       </Routes>
       )}
 
       {token && (
       <Routes>
-        <Route path="/allposts" element={<AllPosts setToken={setToken} token={token} />} />
-        <Route path="/myposts" element={<MyPosts setToken={setToken} token={token} />} />
+        <Route path="/allposts" element={<AllPosts token={token} />} />
+        <Route path="/myposts" element={<MyPosts token={token} />} />
         <Route path="*" element={<Navigate to="/myposts" />} />
       </Routes>
       )}

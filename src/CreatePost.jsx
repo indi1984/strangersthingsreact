@@ -4,7 +4,7 @@ import{ makePost } from './ajax-requests/requests'
 
 
 function CreatePost(props) {
-  const { token, fetchPosts, setPostResults } = props;
+  const { token, fetchPosts, setPostResults, setCreatePost} = props;
 
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
@@ -17,6 +17,7 @@ function CreatePost(props) {
     if (results.success) {
       const newResults = await fetchPosts();
       setPostResults(newResults.data.posts);
+      setCreatePost(false);
     }
   };
 
@@ -40,7 +41,8 @@ function CreatePost(props) {
         value={price}
         onChange={(event)=> {setPrice(event.target.value)}}
       />
-      <Button type="submit">Create Post</Button>
+      <Button className="me-2 ms-3" type="submit" variant="success">Submit</Button>
+      <Button variant="outline-danger"onClick={() => setCreatePost(false)}>Cancel</Button>
     </form>
     
   );

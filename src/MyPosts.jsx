@@ -8,7 +8,7 @@ const MyPosts = (props) => {
   const { token } = props;
    
   useEffect(() => {
-    const getPosts = async () => {
+    async function getPosts() {
       try {
         const results = await myData(token);
         if (results.success) {

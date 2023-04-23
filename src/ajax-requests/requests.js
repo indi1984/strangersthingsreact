@@ -1,4 +1,4 @@
-export const COHORT_NAME = "2301-UNIV-ET-WEB-PT";
+export const COHORT_NAME = "2301-FTB-ET-WEB-PT";
 export const BASE_URL = `https://strangers-things.herokuapp.com/api/${COHORT_NAME}`;
 
 //* USERS
