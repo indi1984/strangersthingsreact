@@ -51,7 +51,7 @@ const MyPosts = (props) => {
             <Row>            
                 <Card bg="light" border="success" style={{ width: '100vh' }}>     
                   <Card.Body>
-                    <Card.Title className="pt-1">{post.title} - <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="danger" text="light">{post.messages.length} Message(s)</Badge></Card.Title>
+                    <Card.Title className="pt-1">{post.title} - <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="danger" text="light">{post.messages.length} - Message(s)</Badge></Card.Title>
                     <Card.Text>{post.description}</Card.Text>
                     <Card.Text>{post.price}</Card.Text>
                     <LinkContainer to={"/SinglePost"}>

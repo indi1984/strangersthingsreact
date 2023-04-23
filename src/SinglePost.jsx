@@ -2,7 +2,7 @@ import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts, deletePost, postMessage } from './ajax-requests/requests'
 import {Container, Row, Button, Card, Badge, Form } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import { Link } from "react-router-dom";
+import Messages from './Messages';
 
 
 const SinglePost = (props) => {
@@ -43,19 +43,28 @@ const SinglePost = (props) => {
               <Fragment key={post._id}>
               <Row>            
                 {post.isAuthor
-                ? <Card bg="light" border="success" style={{ width: '100vh' }}>     
-                    <Card.Body>
-                      <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="success" text="light">{post.author.username}</Badge></Card.Title>
-                      <Card.Text>{post.description}</Card.Text>
-                      <Card.Text>{post.price}</Card.Text>
-                      <Button variant="outline-primary" className="float-end">Edit Post</Button>
-                      <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>
-                      <LinkContainer to="/myposts">
-                        <Button variant="link" className="float-start pt-3" size="sm">Back to My Posts</Button>
-                      </LinkContainer>
-                    </Card.Body>   
-                  </Card>
-                : <Card bg="light" border="dark" style={{ width: '100vh' }}>
+                ? (<Fragment>
+                    <Container fluid>
+                      <Card bg="light" border="success" style={{ width: '100vh' }}>     
+                        <Card.Body>
+                          <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="success" text="light">{post.author.username}</Badge></Card.Title>
+                          <Card.Text>{post.description}</Card.Text>
+                          <Card.Text>{post.price}</Card.Text>
+                          <Button variant="outline-primary" className="float-end">Edit Post</Button>
+                          <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>
+                          <LinkContainer to="/myposts">
+                            <Button variant="link" className="float-start pt-3" size="sm">Back to My Posts</Button>
+                          </LinkContainer>
+                        </Card.Body>   
+                      </Card>
+
+                      {post.messages.length > 0 
+                      ? <Messages post={post} />
+                      : null}
+
+                    </Container>
+                  </Fragment>)
+                : (<Card bg="light" border="dark" style={{ width: '100vh' }}>
                     <Card.Body>
                       <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="dark" text="light">{post.author.username}</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
@@ -65,7 +74,7 @@ const SinglePost = (props) => {
                         <Button variant="link" className="float-start pt-3" size="sm">Back to All Posts</Button>
                       </LinkContainer>
                     </Card.Body>
-                </Card>}
+                </Card>)}
               </Row>
               <br />
               {sendMessage &&
@@ -86,9 +95,20 @@ const SinglePost = (props) => {
                     <Button variant="primary" type="submit" className="float-">
                       Submit
                     </Button>
+                    <Button 
+                      variant="outline-danger"  
+                      className="ms-2"
+                      onClick={() => setSendMessage(false)}
+                    >
+                      Cancel
+                    </Button>
                   </div>
                 </Form>
               </Row>}
+
+
+
+
               </Fragment>
               )
             })

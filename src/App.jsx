@@ -8,6 +8,7 @@ import AllPosts from './AllPosts';
 import MyPosts from './MyPosts';
 import Login from './Login';
 import SinglePost from './SinglePost';
+import Messages from './Messages';
 
 
 function App() {
@@ -79,6 +80,13 @@ function App() {
             postId={postId}
           />} 
         />
+        <Route path="/messages" element={
+          <Messages 
+            token={token}
+            postId={postId}
+            setPostId={setPostId}
+          />}
+        /> 
         <Route path="*" element={<Navigate to="/myposts" />} />
       </Routes>
       )}
