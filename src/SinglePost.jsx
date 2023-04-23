@@ -74,7 +74,8 @@ const SinglePost = (props) => {
                         <Button variant="link" className="float-start pt-3" size="sm">Back to All Posts</Button>
                       </LinkContainer>
                     </Card.Body>
-                </Card>)}
+                  </Card>                               
+                )}
               </Row>
               <br />
               {sendMessage &&

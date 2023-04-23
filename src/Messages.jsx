@@ -9,12 +9,17 @@ const Messages = (props) => {
       <Card bg="light" border="dark" style={{ width: '100vh' }}>
           <Card.Body>
             <Card.Title>Messages - <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="danger" text="light">{post.messages.length} - Message(s)</Badge></Card.Title>         
-            {post.messages.map((message) => {
+            {post.messages.map((message, index) => {
               return (
                 <Card.Body index={message._id}>
                   <Fragment>
-                    <Card.Text>{message.content}</Card.Text>
-                    <Button variant="primary" size="sm" className="float-end me-4 mt-1">Reply to Message</Button>
+                    <Card.Text className="mb-5">
+                      <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="dark" text="light">Message {index + 1}</Badge>
+                        &nbsp;&nbsp;&nbsp;&nbsp;{message.content}
+                      <span>
+                        <Button variant="primary" size="sm" className="float-end me-4 mt-1">Reply to Message</Button>
+                      </span>
+                    </Card.Text> 
                   </Fragment>
                 </Card.Body>
               )}
@@ -23,6 +28,5 @@ const Messages = (props) => {
       </Card>
   );
 }; 
-
 
 export default Messages;
