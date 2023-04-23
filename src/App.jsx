@@ -7,10 +7,12 @@ import Register from './Register';
 import AllPosts from './AllPosts';
 import MyPosts from './MyPosts';
 import Login from './Login';
+import SinglePost from './SinglePost';
 
 
 function App() {
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(false);  
+  const [postId, setPostId] = useState("");
 
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {
@@ -30,17 +32,39 @@ function App() {
       
       {!token && (
       <Routes>
-        <Route path="/allposts" element={<AllPosts setToken={setToken}/>} />
-        <Route path="/register" element={<Register setToken={setToken}/>} />
-        <Route path="/login" element={<Login setToken={setToken}/>} />
+        <Route path="/allposts" element={
+          <AllPosts 
+            setToken={setToken} 
+            setPostId={setPostId} 
+            postId={postId}
+          />} 
+        />
+        <Route path="/register" element={
+          <Register 
+            setToken={setToken}
+          />} 
+        />
+        <Route path="/login" element={
+          <Login 
+            setToken={setToken}
+          />}
+        />
+        <Route path="/SinglePost" element={
+          <SinglePost 
+            setToken={setToken} 
+            setPostId={setPostId}  
+            postId={postId}
+          />} 
+        />
         <Route path="*" element={<Navigate to="/allposts" />} />
       </Routes>
       )}
 
       {token && (
       <Routes>
-        <Route path="/allposts" element={<AllPosts token={token} />} />
-        <Route path="/myposts" element={<MyPosts token={token} />} />
+        <Route path="/allposts" element={<AllPosts token={token} postId={postId} setPostId={setPostId}/>} />
+        <Route path="/myposts" element={<MyPosts token={token} postId={postId}/>} />
+        <Route path="/SinglePost" element={<SinglePost token={token} postId={postId}/>} />
         <Route path="*" element={<Navigate to="/myposts" />} />
       </Routes>
       )}

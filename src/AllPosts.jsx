@@ -1,14 +1,15 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts, deletePost } from './ajax-requests/requests'
 import {Container, Row, Button, Card, Badge } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 import CreatePost from './CreatePost'
 
 
 const AllPosts = (props) => {
   const [postResults, setPostResults] = useState([]);
   const [createPost, setCreatePost] = useState(false);
-  const [postId, setPostId] = useState("");
-  const { token } = props;
+  // const [postId, setPostId] = useState("");
+  const { token, postId, setPostId } = props;
 
   useEffect(() => {
    async function getPosts() {
@@ -23,6 +24,10 @@ const AllPosts = (props) => {
   };
     getPosts()
   }, [postResults, token])
+
+  useEffect(() => {
+    console.log(postId)
+  }, [postId])
 
   return (
     <Fragment>
@@ -52,7 +57,9 @@ const AllPosts = (props) => {
                       <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="success" text="light">{post.author.username}</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>{post.price}</Card.Text>
-                      <Button variant="success" className="float-end" onClick={() => {return(setPostId(post._id), console.log(postId))}}>Go to Post</Button>
+                      <LinkContainer to="/SinglePost">
+                        <Button variant="success" className="float-end" onClick={() => setPostId(post._id)}>Go to Post</Button>
+                      </LinkContainer>
                       {/* <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button> */}
                     </Card.Body>   
                   </Card>
@@ -61,7 +68,9 @@ const AllPosts = (props) => {
                       <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="dark" text="light">{post.author.username}</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>{post.price}</Card.Text>
-                    <Button variant="primary" className="float-end" onClick={() => {return(setPostId(post._id), console.log(postId))}}>Go to Post</Button>
+                    <LinkContainer to={"/SinglePost"}>
+                      <Button variant="primary" className="float-end" onClick={() => setPostId(post._id)}>Go to Post</Button>
+                    </LinkContainer>  
                     </Card.Body>
                 </Card>}
               </Row>
