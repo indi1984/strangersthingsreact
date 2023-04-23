@@ -22,6 +22,7 @@ function Login(props) {
   
   return (
     <div id='container'>
+      <div id="gap"></div>
       <Form onSubmit={handleSubmit} id="register-form">
         <Form.Group 
           className="mb-4" 
@@ -41,10 +42,11 @@ function Login(props) {
           <Form.Control type="password" placeholder="Enter Password..." />
         </Form.Group>
         
-        <Button size='lg' variant="primary" type="submit">
+        <Button size='md' variant="success" type="submit">
           Login
         </Button>
-        <Link className='cards__item__link' to="/register"><Badge pill="true" bg="info">Register</Badge>{' '}</Link>
+        <br />
+        <Link className='cards__item__link' to="/register"><Badge pill="true" bg="primary">Click here to Register new account</Badge>{' '}</Link>
 
 
       </Form>

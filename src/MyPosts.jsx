@@ -1,11 +1,13 @@
 import React, { Fragment, useEffect, useState } from "react";
-import { myData } from './ajax-requests/requests'
-import {Container, Row, Button, Nav, Card, Badge } from 'react-bootstrap';
+import { myData, fetchPosts } from './ajax-requests/requests'
+import {Container, Row, Button, Card, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
+import CreatePost from './CreatePost'
 
 
 const MyPosts = (props) => {
   const [myPostResults, setMyPostResults] = useState([]);
+    const [createPost, setCreatePost] = useState(false);
   const { token, setPostId } = props;
    
   useEffect(() => {
@@ -26,6 +28,21 @@ const MyPosts = (props) => {
     <Fragment>
       <Container fluid>
         <br />
+        <Row>
+          {token && !createPost && (
+          <Button size="lg" variant="warning" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
+          )}
+          {token && createPost && (
+          <Fragment>
+            <CreatePost 
+              token={token} 
+              fetchPosts={fetchPosts} 
+              setPostResults={setMyPostResults} 
+              setCreatePost={setCreatePost}
+            />
+          </Fragment>  
+          )}
+        </Row>
         <br />
         {myPostResults && myPostResults.map((post) => {
           return ( 

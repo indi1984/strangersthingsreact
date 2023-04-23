@@ -61,6 +61,9 @@ const SinglePost = (props) => {
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>{post.price}</Card.Text>
                       <Button variant="primary" size="sm" className="float-end me-4 mt-1" onClick={() => setSendMessage(true)}>Send Message</Button>
+                      <LinkContainer to="/allposts">
+                        <Button variant="link" className="float-start pt-3" size="sm">Back to All Posts</Button>
+                      </LinkContainer>
                     </Card.Body>
                 </Card>}
               </Row>
