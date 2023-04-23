@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container, Nav, Navbar, Form, Button} from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
@@ -39,21 +39,12 @@ function NavigationBar(props) {
               <Nav.Link>My Messages</Nav.Link>
             </LinkContainer>
             )}
-
-            {/* <NavDropdown title="Dropdown" id="collapsible-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown> */}
           </Nav>
 
           <Nav>
+
+
+
             {!token && (
             <LinkContainer to="/login">
               <Nav.Link>
@@ -69,8 +60,8 @@ function NavigationBar(props) {
               </Nav.Link>
             </LinkContainer>
             )}
+ 
           </Nav>
-
         </Navbar.Collapse>
       </Container>
     </Navbar>

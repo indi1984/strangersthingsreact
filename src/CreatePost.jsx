@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Fragment } from 'react';
 import { Button } from 'react-bootstrap';
 import{ makePost } from './ajax-requests/requests'
 
@@ -22,29 +22,30 @@ function CreatePost(props) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="text" 
-        placeholder="Enter Title"
-        value={title}
-        onChange={(event)=> {setTitle(event.target.value)}}
-      />
-      <input 
-        type="text" 
-        placeholder="Enter Description"
-        value={description}
-        onChange={(event)=> {setDescription(event.target.value)}}
-      />
-      <input 
-        type="text" 
-        placeholder="Enter Price"
-        value={price}
-        onChange={(event)=> {setPrice(event.target.value)}}
-      />
-      <Button className="me-2 ms-3" type="submit" variant="success">Submit</Button>
-      <Button variant="outline-danger"onClick={() => setCreatePost(false)}>Cancel</Button>
-    </form>
-    
+    <Fragment>
+      <form onSubmit={handleSubmit}>
+        <input 
+          type="text" 
+          placeholder="Enter Title"
+          value={title}
+          onChange={(event)=> {setTitle(event.target.value)}}
+        />
+        <input 
+          type="text" 
+          placeholder="Enter Description"
+          value={description}
+          onChange={(event)=> {setDescription(event.target.value)}}
+        />
+        <input 
+          type="text" 
+          placeholder="Enter Price"
+          value={price}
+          onChange={(event)=> {setPrice(event.target.value)}}
+        />
+        <Button className="me-2 ms-3" type="submit" variant="success">Submit</Button>
+        <Button variant="outline-danger"onClick={() => setCreatePost(false)}>Cancel</Button>
+      </form>
+    </Fragment>
   );
 };
 

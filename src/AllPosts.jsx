@@ -31,22 +31,25 @@ const AllPosts = (props) => {
 
   return (
     <Fragment>
+      <br/>
       <Container fluid>
-        <div id="gap"></div>
         <Row>
           {token && !createPost && (
-          <Button type="submit" onClick={()=> setCreatePost(true)}>Create Post</Button>
+          <Button size="lg" variant="warning" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
           )}
           {token && createPost && (
-          <CreatePost 
-            token={token} 
-            fetchPosts={fetchPosts} 
-            setPostResults={setPostResults} 
-            setCreatePost={setCreatePost}
-          />
+          <Fragment>
+
+            <CreatePost 
+              token={token} 
+              fetchPosts={fetchPosts} 
+              setPostResults={setPostResults} 
+              setCreatePost={setCreatePost}
+            />
+          </Fragment>  
           )}
         </Row>
-        <div id="gap"></div>
+          <br />
           {postResults && postResults.map((post) => {
             return ( 
               <Fragment key={post._id}>
@@ -60,7 +63,6 @@ const AllPosts = (props) => {
                       <LinkContainer to="/SinglePost">
                         <Button variant="success" className="float-end" onClick={() => setPostId(post._id)}>Go to Post</Button>
                       </LinkContainer>
-                      {/* <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button> */}
                     </Card.Body>   
                   </Card>
                 : <Card bg="light" border="dark" style={{ width: '100vh' }}>
