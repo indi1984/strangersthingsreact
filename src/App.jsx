@@ -82,6 +82,7 @@ function App() {
           <SinglePost 
             token={token} 
             postId={postId}
+            setPostId={setPostId}
           />} 
         />
         <Route path="/messages" element={
