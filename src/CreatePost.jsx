@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from 'react';
-import { Button } from 'react-bootstrap';
+import {Button, Card, Badge, Container, Row, Col } from 'react-bootstrap';
+
 import{ makePost } from './ajax-requests/requests'
 
 
@@ -25,26 +26,44 @@ function CreatePost(props) {
   return (
     <Fragment>
       <form onSubmit={handleSubmit}>
-        <input 
-          type="text" 
-          placeholder="Enter Title"
-          value={title}
-          onChange={(event)=> {setTitle(event.target.value)}}
-        />
-        <input 
-          type="text" 
-          placeholder="Enter Description"
-          value={description}
-          onChange={(event)=> {setDescription(event.target.value)}}
-        />
-        <input 
-          type="text" 
-          placeholder="Enter Price"
-          value={price}
-          onChange={(event)=> {setPrice(event.target.value)}}
-        />
-        <Button className="me-2 ms-3" type="submit" variant="success">Submit</Button>
-        <Button variant="outline-danger"onClick={() => setCreatePost(false)}>Cancel</Button>
+        <Container fluid>
+          <Row>
+            <Col>
+              <input 
+                type="text" 
+                placeholder="Enter Title"
+                value={title}
+                onChange={(event)=> {setTitle(event.target.value)}}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <input 
+                type="text" 
+                placeholder="Enter Description"
+                value={description}
+                onChange={(event)=> {setDescription(event.target.value)}}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <input 
+                type="text" 
+                placeholder="Enter Price"
+                value={price}
+                onChange={(event)=> {setPrice(event.target.value)}}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button className="mt-3 me-2" type="submit" variant="success">Submit</Button>
+              <Button className="mt-3 ms-2" variant="outline-danger"onClick={() => setCreatePost(false)}>Cancel</Button>
+            </Col>
+          </Row>
+        </Container>
       </form>
     </Fragment>
   );
