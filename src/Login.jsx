@@ -23,6 +23,9 @@ function Login(props) {
   return (
     <div id='container'>
       <div id="gap"></div>
+      <div id="gap"></div>
+      <div id="gap"></div>
+      <div id="gap"></div>
       <Form onSubmit={handleSubmit} id="register-form">
         <Form.Group 
           className="mb-4" 

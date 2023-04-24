@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts } from './ajax-requests/requests'
-import {Container, Row, Button, Card, Badge } from 'react-bootstrap';
+import {Container, Row, Col, Button, Card, Badge } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import CreatePost from './CreatePost'
 
@@ -33,9 +33,13 @@ const AllPosts = (props) => {
       <br/>
       <Container fluid>
         <Row>
-          {token && !createPost && (
-          <Button id="newPostButton"size="lg" variant="warning" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
-          )}
+          <Col>
+            {token && !createPost && (
+            <Button id="newPostButton"size="lg" variant="warning" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
+            )}
+          </Col>
+        </Row>
+        <Row>
           {token && createPost && (
           <Fragment>
             <CreatePost 
