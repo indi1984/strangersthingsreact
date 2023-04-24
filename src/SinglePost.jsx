@@ -99,9 +99,10 @@ const SinglePost = (props) => {
               {sendMessage && token &&
               <Row>
                 <Col>
-                  <Container fluid>
+                  <Container>
                     <Form onSubmit={handleSubmit}>
-                        <Row>
+                      <Row>
+                        <Col xs={12}>
                           <Form.Group 
                             className="mb-3" 
                             controlId="formText"
@@ -109,20 +110,25 @@ const SinglePost = (props) => {
                           >
                             <Form.Control type="text" placeholder="Enter message..." />
                           </Form.Group>
-                        </Row>
+                        </Col>
+                      </Row>
 
-                      <div className="text-center">
-                        <Button variant="success" type="submit" className="float-">
-                          Submit
-                        </Button>
-                        <Button 
-                          variant="outline-danger"  
-                          className="ms-2"
-                          onClick={() => setSendMessage(false)}
-                        >
-                          Cancel
-                        </Button>
-                      </div>
+                      <Row>
+                        <Col>
+                          <Button variant="success" type="submit" className="float-">
+                            Submit
+                          </Button>
+                        </Col>
+                        <Col>
+                          <Button 
+                            variant="outline-danger"  
+                            className="ms-2"
+                            onClick={() => setSendMessage(false)}
+                          >
+                            Cancel
+                          </Button>
+                        </Col>
+                      </Row>
                     </Form>
                   </Container>
                 </Col>

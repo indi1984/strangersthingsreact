@@ -2,7 +2,6 @@ import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts } from './ajax-requests/requests'
 import { Container, Row, Col, Button, Card, Badge, Alert, Form, InputGroup } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
-import CreatePost from './CreatePost'
 
 
 const AllPosts = (props) => {
@@ -10,14 +9,19 @@ const AllPosts = (props) => {
   const [searchTerm, setSearchTerm] = useState('');
   const { token, setPostId } = props;
 
-  const filteredPosts = postResults.filter(post => postMatches(post, searchTerm));
-  const postsToDisplay = searchTerm.length ? filteredPosts : postResults;
-  
+ const filteredPosts = postResults.filter(post => postMatches(post, searchTerm));
+ const postsToDisplay = searchTerm.length ? filteredPosts : postResults; 
 
-  function postMatches(post, searchTerm) {
-    if (post.title === searchTerm) {
-      return true;
-    } else if (post.description === searchTerm) {
+  function postMatches(post, text) {
+    console.log(text)
+    if (
+        post.description.toLowerCase().includes(text) 
+        || post.title.toLowerCase().includes(text) 
+        || post.author.username.toLowerCase().includes(text) 
+        || post.description.includes(text)
+        || post.title.includes(text)
+        || post.author.username.includes(text)
+      ) {
       return true;
     } else {
       return false;
@@ -26,7 +30,7 @@ const AllPosts = (props) => {
 
   async function handleSubmit(event) {
     event.preventDefault()
-  };
+   };
   
   useEffect(() => {
    async function getPosts() {
@@ -40,7 +44,7 @@ const AllPosts = (props) => {
     }
   };
     getPosts()
-  }, [postResults, token])
+  }, [token])
 
   return (
     <Fragment>
@@ -48,7 +52,7 @@ const AllPosts = (props) => {
       <Container>
         <Form onSubmit={handleSubmit}>
             <Row className="justify-content-md-center">
-              <Col xs={7}>
+              <Col xs={8}>
                 <Form.Group className="mb-4" controlId="formSearch">
                   <InputGroup>
                     <Form.Control 
@@ -69,13 +73,11 @@ const AllPosts = (props) => {
                 </Form.Text>
               </Form.Group>
             </Col>
-            <Col xs={1}>
-              <Button type="submit" variant="primary" className="ps-4 pe-4">Search</Button>
-            </Col>
           </Row>
         </Form>
-      </Container>
-       
+
+
+      </Container>  
       <Container fluid>      
         {postsToDisplay && postsToDisplay.map((post) => {
           return ( 
@@ -87,7 +89,7 @@ const AllPosts = (props) => {
                       <Card.Body>
 
                         {post.willDeliver &&
-                        <Alert style={{textAlign: "center"}} variant="primary">
+                        <Alert style={{textAlign: "center"}} variant="success">
                           Willing to deliver!
                         </Alert>}
 
