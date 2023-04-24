@@ -1,14 +1,14 @@
 import React, { useState, Fragment } from 'react';
-import {Button, Container, Row, Col, Form } from 'react-bootstrap';
-import{ makePost } from './ajax-requests/requests'
+import { Button, Container, Row, Col, Form } from 'react-bootstrap';
+import { makePost } from './ajax-requests/requests'
 
 
 function CreatePost(props) {
-  const { token, fetchPosts, setPostResults, setCreatePost} = props;
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [price, setPrice] = useState('');
-  const [willDeliver, setWillDeliver] = useState(false);
+  const { token, fetchPosts, setPostResults, setCreatePost } = props;
+  const [ title, setTitle ] = useState('');
+  const [ description, setDescription ] = useState('');
+  const [ price, setPrice ] = useState('');
+  const [ willDeliver, setWillDeliver ] = useState(false);
   
   async function handleSubmit(event) {
     event.preventDefault();

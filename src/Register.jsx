@@ -5,12 +5,12 @@ import { registerUser } from './ajax-requests/requests';
 
 function Register(props) {
   const { setToken } = props;
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [ username, setUsername ] = useState('');
+  const [ password, setPassword ] = useState('');
   
   async function handleSubmit(event) {
     event.preventDefault();
-    const user = {username, password};
+    const user = { username, password };
     const results = await registerUser(user);
     if (results.success) {
       setToken(results.data.token);

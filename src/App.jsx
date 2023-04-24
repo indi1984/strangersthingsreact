@@ -13,9 +13,9 @@ import AllMessages from './AllMessages'
 
 
 function App() {
-  const [token, setToken] = useState(false);  
-  const [postId, setPostId] = useState("");
-  const [myPostResults, setMyPostResults] = useState([]);
+  const [ token, setToken ] = useState(false);  
+  const [ postId, setPostId ] = useState("");
+  const [ myPostResults, setMyPostResults ] = useState([]);
 
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {

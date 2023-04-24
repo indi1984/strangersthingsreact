@@ -6,7 +6,7 @@ import CreatePost from './CreatePost'
 
 
 const MyPosts = (props) => {
-  const [createPost, setCreatePost] = useState(false);
+  const [ createPost, setCreatePost ] = useState(false);
   const { token, setPostId, myPostResults, setMyPostResults } = props;
    
   useEffect(() => {
@@ -57,7 +57,7 @@ const MyPosts = (props) => {
                     <Card.Body>
 
                       {post.willDeliver &&
-                      <Alert style={{textAlign: "center"}} variant="primary">
+                      <Alert style={{textAlign: "center"}} variant="success">
                         Willing to deliver!
                       </Alert>}
 

@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import {Button, Card, Badge } from 'react-bootstrap';
+import { Button, Card, Badge } from 'react-bootstrap';
 
 
 const Messages = (props) => {

@@ -5,8 +5,8 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 
 const AllPosts = (props) => {
-  const [postResults, setPostResults] = useState([]);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [ postResults, setPostResults ] = useState([]);
+  const [ searchTerm, setSearchTerm ] = useState('');
   const { token, setPostId } = props;
   const filteredPosts = postResults.filter(post => postMatches(post, searchTerm));
   const postsToDisplay = searchTerm.length ? filteredPosts : postResults; 

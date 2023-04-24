@@ -1,5 +1,5 @@
 import React, { Fragment } from "react";
-import {Button, Card, Badge, Container, Row, Col } from 'react-bootstrap';
+import { Button, Card, Badge, Container, Row, Col } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 

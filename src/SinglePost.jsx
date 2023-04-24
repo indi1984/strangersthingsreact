@@ -1,14 +1,14 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts, deletePost, postMessage } from './ajax-requests/requests'
-import {Container, Row, Col, Button, Card, Badge, Form, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card, Badge, Form, Alert } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Messages from './Messages';
 
 
 const SinglePost = (props) => {
-  const [singlePostResult, setSinglePostResult] = useState([]);
-  const [sendMessage, setSendMessage] = useState(false);
-  const [message, setMessage] = useState('');
+  const [ singlePostResult, setSinglePostResult ] = useState([]);
+  const [ sendMessage, setSendMessage ] = useState(false);
+  const [ message, setMessage ] = useState('');
   const { token, postId } = props;
 
   async function handleSubmit(event) {
@@ -49,7 +49,7 @@ const SinglePost = (props) => {
                           <Card.Body>
 
                             {post.willDeliver &&
-                            <Alert style={{textAlign: "center"}} variant="primary">
+                            <Alert style={{textAlign: "center"}} variant="success">
                               Willing to deliver!
                             </Alert>}
 
