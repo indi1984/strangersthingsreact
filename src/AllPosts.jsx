@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts } from './ajax-requests/requests'
-import {Container, Row, Col, Button, Card, Badge, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card, Badge, Alert } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import CreatePost from './CreatePost'
 
@@ -8,8 +8,18 @@ import CreatePost from './CreatePost'
 const AllPosts = (props) => {
   const [postResults, setPostResults] = useState([]);
   const [createPost, setCreatePost] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
   const { token, postId, setPostId } = props;
 
+  const filteredPosts = postResults.filter(post => postMatches(post, searchTerm));
+  const postsToDisplay = searchTerm.length ? filteredPosts : postResults;
+  
+  function postMatches(post, text) {
+
+
+
+  };
+  
   useEffect(() => {
    async function getPosts() {
     try {
@@ -30,8 +40,18 @@ const AllPosts = (props) => {
 
   return (
     <Fragment>
+      <h1 style={{textAlign: "center"}}>TEST</h1>
+
+
       <Container fluid> 
         <br/>
+        <Row>
+          <Col>
+            <h1>Test</h1>
+          </Col>
+        </Row>
+        <br />
+
         <Row className="createPostButton">
           <Col>
             {token && !createPost && (
@@ -54,7 +74,7 @@ const AllPosts = (props) => {
         </Row>
         <br />
         
-        {postResults && postResults.map((post) => {
+        {postsToDisplay && postsToDisplay.map((post) => {
           return ( 
             <Fragment key={post._id}>
               <Row>

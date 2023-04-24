@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { myData, fetchPosts } from './ajax-requests/requests'
-import {Container, Row, Col, Button, Card, Badge, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card, Badge, Alert } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import CreatePost from './CreatePost'
 

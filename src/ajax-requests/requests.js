@@ -128,4 +128,25 @@ export const postMessage = async (postId, token, message) => {
     } catch (err) {
       console.error(err);
     }
-  }
+  };
+
+export const updatePost = async (postId, token, post) => {
+    try {
+      const response = await fetch(`${BASE_URL}/posts/${postId}`, {
+        method: "PATCH",
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+          post
+        })
+      });
+      const result = await response.json();
+      console.log(result);
+      return result
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
