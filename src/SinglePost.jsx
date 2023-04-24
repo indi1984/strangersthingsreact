@@ -69,7 +69,9 @@ const SinglePost = (props) => {
                       <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="dark" text="light">{post.author.username}</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>{post.price}</Card.Text>
-                      <Button variant="primary" size="sm" className="float-end me-4 mt-1" onClick={() => setSendMessage(true)}>Send Message</Button>
+                      {token &&
+                        <Button variant="primary" size="sm" className="float-end me-4 mt-1" onClick={() => setSendMessage(true)}>Send Message</Button>
+                      }
                       <LinkContainer to="/allposts">
                         <Button variant="link" className="float-start pt-3" size="sm">Back to All Posts</Button>
                       </LinkContainer>
@@ -78,7 +80,7 @@ const SinglePost = (props) => {
                 )}
               </Row>
               <br />
-              {sendMessage &&
+              {sendMessage && token &&
               <Row>
                 <Form onSubmit={handleSubmit}>
                   <Form.Group 
