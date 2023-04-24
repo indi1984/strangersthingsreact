@@ -30,7 +30,7 @@ const SinglePost = (props) => {
     }
   };
     getPosts(token)
-  }, [singlePostResult, token])
+  }, [singlePostResult, token]);
 
   return (
     <Fragment>
@@ -40,7 +40,8 @@ const SinglePost = (props) => {
             return ( 
               <Fragment key={post._id}>
               <Row>  
-                <Col>          
+                <Col>  
+
                   {post.isAuthor
                   ? (<Fragment>
                       <Container fluid>
@@ -78,7 +79,7 @@ const SinglePost = (props) => {
                         <Alert style={{textAlign: "center"}} variant="primary">
                           Willing to deliver!
                         </Alert>}
-
+                        
                         <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="dark" text="light">{post.author.username}</Badge></Card.Title>
                         <Card.Text>{post.description}</Card.Text>
                         <Card.Text>{post.price}</Card.Text>
@@ -93,9 +94,11 @@ const SinglePost = (props) => {
                       </Card.Body>
                     </Card>                               
                   )}
+
                 </Col>
               </Row>
               <br />
+
               {sendMessage && token &&
               <Row>
                 <Col>
@@ -112,7 +115,6 @@ const SinglePost = (props) => {
                           </Form.Group>
                         </Col>
                       </Row>
-
                       <Row>
                         <Col>
                           <Button variant="success" type="submit" className="float-">
@@ -133,6 +135,7 @@ const SinglePost = (props) => {
                   </Container>
                 </Col>
               </Row>}
+
               </Fragment>
               )
             })

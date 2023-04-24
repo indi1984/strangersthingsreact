@@ -21,7 +21,7 @@ const MyPosts = (props) => {
       }
     };
     getPosts(token)
-  }, [myPostResults, token, setMyPostResults])
+  }, [myPostResults, token, setMyPostResults]);
 
   return (
     <Fragment>
@@ -29,22 +29,24 @@ const MyPosts = (props) => {
         <br />
         <Row>
           <Col>
+
             {token && !createPost && (
             <Button size="lg" variant="outline-success" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
             )}
+
             {token && createPost && (
-            <Fragment>
               <CreatePost 
                 token={token} 
                 fetchPosts={fetchPosts} 
                 setPostResults={setMyPostResults} 
                 setCreatePost={setCreatePost}
               />
-            </Fragment>  
             )}
+
           </Col>
         </Row>
         <br />
+
         {myPostResults && myPostResults.map((post) => {
           return ( 
             post.active &&
@@ -62,11 +64,9 @@ const MyPosts = (props) => {
                       <Card.Title className="pt-1">{post.title} - <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="danger" text="light">{post.messages.length} - Message(s)</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>{post.price}</Card.Text>
-
                       <LinkContainer to={"/SinglePost"}>
                         <Button variant="success" className="float-end" onClick={() => setPostId(post._id)}>Go to Post</Button>
                       </LinkContainer>
-
                     </Card.Body>
                   </Card>
                 </Col> 
@@ -76,6 +76,7 @@ const MyPosts = (props) => {
             )
           })
         }
+
       </Container>
     </Fragment>  
   ); 

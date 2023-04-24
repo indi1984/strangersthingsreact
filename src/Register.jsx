@@ -5,7 +5,6 @@ import { registerUser } from './ajax-requests/requests';
 
 function Register(props) {
   const { setToken } = props;
-  
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
@@ -34,7 +33,6 @@ function Register(props) {
           <Form.Label>Username</Form.Label>
           <Form.Control type="text" placeholder="Enter Username..." />
         </Form.Group>
-
         <Form.Group 
           className="mb-4" 
           controlId="formBasicPassword"
@@ -43,7 +41,6 @@ function Register(props) {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Enter Password..." />
         </Form.Group>
-        
         <Button variant="success" type="submit">
           Register
         </Button>

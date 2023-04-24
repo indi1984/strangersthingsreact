@@ -10,7 +10,8 @@ const Messages = (props) => {
       <br />
       <Card bg="light" border="dark" style={{ width: '100vh' }}>
           <Card.Body>
-            <Card.Title>Messages - <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="danger" text="light">{post.messages.length} - Message(s)</Badge></Card.Title>         
+            <Card.Title>Messages - <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="danger" text="light">{post.messages.length} - Message(s)</Badge></Card.Title>  
+
             {post.messages.map((message, index) => {
               return (
                 <Card.Body key={message._id}>
@@ -26,6 +27,7 @@ const Messages = (props) => {
                 </Card.Body>
               )}
             )}
+            
           </Card.Body>
       </Card>
     </Fragment> 

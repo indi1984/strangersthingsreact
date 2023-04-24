@@ -9,6 +9,7 @@ const AllMessages = (props) => {
 
   return (
       <Container fluid>
+        
         {myPostResults && myPostResults.filter(post => post.messages.length > 0).map((post) => {
           return ( 
             <Fragment key={post._id}>
@@ -23,6 +24,7 @@ const AllMessages = (props) => {
                           </LinkContainer>
                           <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="success" text="light">{post.author.username}</Badge>
                         </Card.Title>
+
                         {post.messages.map((message, index) => {
                           return (
                             <Card.Body key={message._id}>
@@ -37,7 +39,8 @@ const AllMessages = (props) => {
                               </Fragment>
                             </Card.Body>
                           )}
-                        )}    
+                        )}  
+
                       </Card.Body>   
                     </Card>
                 </Col>

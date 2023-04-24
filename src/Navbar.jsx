@@ -3,7 +3,6 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 
 
-
 function NavigationBar(props) {
   const {token, setToken} = props;
   return (

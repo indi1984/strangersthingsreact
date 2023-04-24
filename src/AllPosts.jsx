@@ -8,9 +8,8 @@ const AllPosts = (props) => {
   const [postResults, setPostResults] = useState([]);
   const [searchTerm, setSearchTerm] = useState('');
   const { token, setPostId } = props;
-
- const filteredPosts = postResults.filter(post => postMatches(post, searchTerm));
- const postsToDisplay = searchTerm.length ? filteredPosts : postResults; 
+  const filteredPosts = postResults.filter(post => postMatches(post, searchTerm));
+  const postsToDisplay = searchTerm.length ? filteredPosts : postResults; 
 
   function postMatches(post, text) {
     console.log(text)
@@ -75,15 +74,14 @@ const AllPosts = (props) => {
             </Col>
           </Row>
         </Form>
-
-
       </Container>  
       <Container fluid>      
         {postsToDisplay && postsToDisplay.map((post) => {
           return ( 
             <Fragment key={post._id}>
               <Row>
-                <Col>            
+                <Col>
+
                   {post.isAuthor
                   ? <Card bg="light" border="success" style={{ width: '100vh' }}>     
                       <Card.Body>
@@ -117,6 +115,7 @@ const AllPosts = (props) => {
                       </LinkContainer>  
                       </Card.Body>
                   </Card>}
+                  
                 </Col>
               </Row>
               <br />
