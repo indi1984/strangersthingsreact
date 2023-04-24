@@ -30,7 +30,8 @@ function CreatePost(props) {
           <Row>
             <Col>
               <input 
-                type="text" 
+                type="text"
+                className="mb-3" 
                 placeholder="Enter Title"
                 value={title}
                 onChange={(event)=> {setTitle(event.target.value)}}
@@ -50,7 +51,8 @@ function CreatePost(props) {
           <Row>
             <Col>
               <input 
-                type="text" 
+                type="text"
+                className="mt-3" 
                 placeholder="Enter Price"
                 value={price}
                 onChange={(event)=> {setPrice(event.target.value)}}
