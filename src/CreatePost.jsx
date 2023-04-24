@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import {Button, Container, Row, Col } from 'react-bootstrap';
+import {Button, Container, Row, Col, Form } from 'react-bootstrap';
 
 import{ makePost } from './ajax-requests/requests'
 
@@ -10,7 +10,7 @@ function CreatePost(props) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
-  const [willDeliver, setWillDeliver] = useState('');
+  const [willDeliver, setWillDeliver] = useState(false);
   
  async function handleSubmit(event) {
     event.preventDefault();
@@ -57,6 +57,18 @@ function CreatePost(props) {
                 value={price}
                 onChange={(event)=> {setPrice(event.target.value)}}
               />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group className="mt-3" controlId="formBasicCheckbox">
+                <Form.Check 
+                  type="checkbox"
+                  value={willDeliver} 
+                  label="Willing to deliver?"
+                  onChange={(event)=> {setWillDeliver(event.target.checked)}}
+                />
+              </Form.Group>
             </Col>
           </Row>
           <Row>

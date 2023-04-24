@@ -13,7 +13,6 @@ function NavigationBar(props) {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            
             {!token && (
             <LinkContainer to="/">
               <Nav.Link>
@@ -42,9 +41,6 @@ function NavigationBar(props) {
           </Nav>
 
           <Nav>
-
-
-
             {!token && (
             <LinkContainer to="/login">
               <Nav.Link>
@@ -60,7 +56,6 @@ function NavigationBar(props) {
               </Nav.Link>
             </LinkContainer>
             )}
- 
           </Nav>
         </Navbar.Collapse>
       </Container>

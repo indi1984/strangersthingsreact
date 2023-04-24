@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { myData, fetchPosts } from './ajax-requests/requests'
-import {Container, Row, Col, Button, Card, Badge } from 'react-bootstrap';
+import {Container, Row, Col, Button, Card, Badge, Alert } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import CreatePost from './CreatePost'
 
@@ -30,7 +30,7 @@ const MyPosts = (props) => {
         <Row>
           <Col>
             {token && !createPost && (
-            <Button size="lg" variant="warning" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
+            <Button size="lg" variant="outline-success" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
             )}
             {token && createPost && (
             <Fragment>
@@ -53,12 +53,20 @@ const MyPosts = (props) => {
                 <Col>       
                   <Card bg="light" border="success" style={{ width: '100vh' }}>     
                     <Card.Body>
+
+                      {post.willDeliver &&
+                      <Alert style={{textAlign: "center"}} variant="primary">
+                        Willing to deliver!
+                      </Alert>}
+
                       <Card.Title className="pt-1">{post.title} - <Badge style={{fontSize: 12}} id="username-badge" pill="true" bg="danger" text="light">{post.messages.length} - Message(s)</Badge></Card.Title>
                       <Card.Text>{post.description}</Card.Text>
                       <Card.Text>{post.price}</Card.Text>
+
                       <LinkContainer to={"/SinglePost"}>
                         <Button variant="success" className="float-end" onClick={() => setPostId(post._id)}>Go to Post</Button>
-                      </LinkContainer>  
+                      </LinkContainer>
+
                     </Card.Body>
                   </Card>
                 </Col> 

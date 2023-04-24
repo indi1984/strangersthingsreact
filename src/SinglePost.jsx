@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts, deletePost, postMessage } from './ajax-requests/requests'
-import {Container, Row, Col, Button, Card, Badge, Form } from 'react-bootstrap';
+import {Container, Row, Col, Button, Card, Badge, Form, Alert } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import Messages from './Messages';
 
@@ -46,6 +46,12 @@ const SinglePost = (props) => {
                       <Container fluid>
                         <Card bg="light" border="success" style={{ width: '100vh' }}>     
                           <Card.Body>
+
+                            {post.willDeliver &&
+                            <Alert style={{textAlign: "center"}} variant="primary">
+                              Willing to deliver!
+                            </Alert>}
+
                             <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="success" text="light">{post.author.username}</Badge></Card.Title>
                             <Card.Text>{post.description}</Card.Text>
                             <Card.Text>{post.price}</Card.Text>
@@ -67,12 +73,20 @@ const SinglePost = (props) => {
                     </Fragment>)
                   : (<Card bg="light" border="dark" style={{ width: '100vh' }}>
                       <Card.Body>
+
+                        {post.willDeliver &&
+                        <Alert style={{textAlign: "center"}} variant="primary">
+                          Willing to deliver!
+                        </Alert>}
+
                         <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="dark" text="light">{post.author.username}</Badge></Card.Title>
                         <Card.Text>{post.description}</Card.Text>
                         <Card.Text>{post.price}</Card.Text>
+
                         {token &&
                           <Button variant="primary" size="sm" className="float-end me-4 mt-1" onClick={() => setSendMessage(true)}>Send Message</Button>
                         }
+
                         <LinkContainer to="/allposts">
                           <Button variant="link" className="float-start pt-3" size="sm">Back to All Posts</Button>
                         </LinkContainer>
@@ -98,7 +112,7 @@ const SinglePost = (props) => {
                         </Row>
 
                       <div className="text-center">
-                        <Button variant="primary" type="submit" className="float-">
+                        <Button variant="success" type="submit" className="float-">
                           Submit
                         </Button>
                         <Button 
