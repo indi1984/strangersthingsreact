@@ -6,9 +6,8 @@ import CreatePost from './CreatePost'
 
 
 const MyPosts = (props) => {
-  const [myPostResults, setMyPostResults] = useState([]);
-    const [createPost, setCreatePost] = useState(false);
-  const { token, setPostId } = props;
+  const [createPost, setCreatePost] = useState(false);
+  const { token, setPostId, myPostResults, setMyPostResults } = props;
    
   useEffect(() => {
     async function getPosts() {
@@ -22,7 +21,7 @@ const MyPosts = (props) => {
       }
     };
     getPosts(token)
-  }, [myPostResults, token])
+  }, [myPostResults, token, setMyPostResults])
 
   return (
     <Fragment>

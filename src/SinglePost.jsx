@@ -18,7 +18,6 @@ const SinglePost = (props) => {
     setSendMessage(false);
   };
 
- 
   useEffect(() => {
    async function getPosts() {
     try {
@@ -32,7 +31,6 @@ const SinglePost = (props) => {
   };
     getPosts(token)
   }, [singlePostResult, token])
-
 
   return (
     <Fragment>
@@ -51,7 +49,9 @@ const SinglePost = (props) => {
                           <Card.Text>{post.description}</Card.Text>
                           <Card.Text>{post.price}</Card.Text>
                           <Button variant="outline-primary" className="float-end">Edit Post</Button>
-                          <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>
+                          <LinkContainer to="/myposts">
+                            <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>
+                          </LinkContainer>
                           <LinkContainer to="/myposts">
                             <Button variant="link" className="float-start pt-3" size="sm">Back to My Posts</Button>
                           </LinkContainer>

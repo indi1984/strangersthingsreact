@@ -9,11 +9,13 @@ import MyPosts from './MyPosts';
 import Login from './Login';
 import SinglePost from './SinglePost';
 import Messages from './Messages';
+import AllMessages from './AllMessages'
 
 
 function App() {
   const [token, setToken] = useState(false);  
   const [postId, setPostId] = useState("");
+  const [myPostResults, setMyPostResults] = useState([]);
 
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {
@@ -72,6 +74,8 @@ function App() {
             token={token} 
             postId={postId} 
             setPostId={setPostId}
+            myPostResults={myPostResults}
+            setMyPostResults={setMyPostResults}
           />} 
         />
         <Route path="/SinglePost" element={
@@ -85,6 +89,14 @@ function App() {
             token={token}
             postId={postId}
             setPostId={setPostId}
+          />}
+        /> 
+        <Route path="/allmessages" element={
+          <AllMessages 
+            token={token}
+            postId={postId}
+            setPostId={setPostId}
+            myPostResults={myPostResults}
           />}
         /> 
         <Route path="*" element={<Navigate to="/myposts" />} />

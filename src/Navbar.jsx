@@ -35,7 +35,7 @@ function NavigationBar(props) {
             )}
             
             {token && (
-            <LinkContainer to="/mymessages">
+            <LinkContainer to="/allmessages">
               <Nav.Link>My Messages</Nav.Link>
             </LinkContainer>
             )}
