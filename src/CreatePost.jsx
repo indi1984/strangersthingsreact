@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import {Button, Card, Badge, Container, Row, Col } from 'react-bootstrap';
+import {Button, Container, Row, Col } from 'react-bootstrap';
 
 import{ makePost } from './ajax-requests/requests'
 
