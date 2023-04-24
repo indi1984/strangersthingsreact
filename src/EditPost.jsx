@@ -32,66 +32,65 @@ function EditPost(props) {
     getSinglePost()
  }, []);
   
-
-    return (
-      <Fragment>
-        <form onSubmit={handleSubmit}>
-          <Container fluid>
-            <Row>
-              <Col>
-                <input 
-                  type="text"
-                  className="mb-3" 
-                  placeholder={singlePost.title}
-                  value={title}
-                  onChange={(event)=> {setTitle(event.target.value)}}
+  return (
+    <Fragment>
+      <form onSubmit={handleSubmit}>
+        <Container fluid>
+          <Row>
+            <Col>
+              <input 
+                type="text"
+                className="mb-3" 
+                placeholder={singlePost.title}
+                value={title}
+                onChange={(event)=> {setTitle(event.target.value)}}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <input 
+                type="text" 
+                placeholder={singlePost.description}
+                value={description}
+                onChange={(event)=> {setDescription(event.target.value)}}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <input 
+                type="text"
+                className="mt-3" 
+                placeholder={singlePost.price}
+                value={price}
+                onChange={(event)=> {setPrice(event.target.value)}}
+              />
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Form.Group className="mt-3" controlId="formBasicCheckbox">
+                <Form.Check 
+                  type="checkbox"
+                  placeholder={singlePost.willDeliver}
+                  value={willDeliver} 
+                  label="Willing to deliver?"
+                  onChange={(event)=> {setWillDeliver(event.target.checked)}}
                 />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <input 
-                  type="text" 
-                  placeholder={singlePost.description}
-                  value={description}
-                  onChange={(event)=> {setDescription(event.target.value)}}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <input 
-                  type="text"
-                  className="mt-3" 
-                  placeholder={singlePost.price}
-                  value={price}
-                  onChange={(event)=> {setPrice(event.target.value)}}
-                />
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Form.Group className="mt-3" controlId="formBasicCheckbox">
-                  <Form.Check 
-                    type="checkbox"
-                    placeholder={singlePost.willDeliver}
-                    value={willDeliver} 
-                    label="Willing to deliver?"
-                    onChange={(event)=> {setWillDeliver(event.target.checked)}}
-                  />
-                </Form.Group>
-              </Col>
-            </Row>
-            <Row>
-              <Col>
-                <Button className="mt-3 me-2" type="submit" variant="success">Submit</Button>
-                <Button className="mt-3 ms-2" variant="outline-danger"onClick={() => setEditPost(false)}>Cancel</Button>
-              </Col>
-            </Row>
-          </Container>
-        </form>
-      </Fragment>
-    )
+              </Form.Group>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button className="mt-3 me-2" type="submit" variant="success">Submit</Button>
+              <Button className="mt-3 ms-2" variant="outline-danger"onClick={() => setEditPost(false)}>Cancel</Button>
+            </Col>
+          </Row>
+        </Container>
+      </form>
+    </Fragment>
+  )
 };
 
 export default EditPost;
