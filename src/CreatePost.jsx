@@ -9,10 +9,11 @@ function CreatePost(props) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [price, setPrice] = useState('');
+  const [willDeliver, setWillDeliver] = useState('');
   
  async function handleSubmit(event) {
     event.preventDefault();
-    const post = {title, description, price};
+    const post = {title, description, price, willDeliver};
     const results = await makePost(post, token);
     if (results.success) {
       const newResults = await fetchPosts();

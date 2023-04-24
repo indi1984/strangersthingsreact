@@ -82,36 +82,33 @@ const SinglePost = (props) => {
               <br />
               {sendMessage && token &&
               <Row>
-                <Form onSubmit={handleSubmit}>
-                  <Form.Group 
-                    className="mb-3" 
-                    controlId="formText"
-                    onChange={(event) => setMessage(event.target.value)}
-                  >
-                    <Form.Control type="text" placeholder="Enter message..." />
-                  </Form.Group>
+                <Container fluid>
+                  <Form onSubmit={handleSubmit}>
+                      <Row>
+                        <Form.Group 
+                          className="mb-3" 
+                          controlId="formText"
+                          onChange={(event) => setMessage(event.target.value)}
+                        >
+                          <Form.Control type="text" placeholder="Enter message..." />
+                        </Form.Group>
+                      </Row>
 
-                  <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Will Pick Up" />
-                  </Form.Group>
-                  <div className="text-center">
-                    <Button variant="primary" type="submit" className="float-">
-                      Submit
-                    </Button>
-                    <Button 
-                      variant="outline-danger"  
-                      className="ms-2"
-                      onClick={() => setSendMessage(false)}
-                    >
-                      Cancel
-                    </Button>
-                  </div>
-                </Form>
+                    <div className="text-center">
+                      <Button variant="primary" type="submit" className="float-">
+                        Submit
+                      </Button>
+                      <Button 
+                        variant="outline-danger"  
+                        className="ms-2"
+                        onClick={() => setSendMessage(false)}
+                      >
+                        Cancel
+                      </Button>
+                    </div>
+                  </Form>
+                </Container>
               </Row>}
-
-
-
-
               </Fragment>
               )
             })

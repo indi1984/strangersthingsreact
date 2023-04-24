@@ -34,7 +34,7 @@ const AllPosts = (props) => {
       <Container fluid>
         <Row>
           {token && !createPost && (
-          <Button size="lg" variant="warning" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
+          <Button id="newPostButton"size="lg" variant="warning" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
           )}
           {token && createPost && (
           <Fragment>
