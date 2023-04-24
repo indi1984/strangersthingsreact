@@ -1,23 +1,31 @@
 import React, { Fragment, useEffect, useState } from "react";
 import { fetchPosts } from './ajax-requests/requests'
-import { Container, Row, Col, Button, Card, Badge, Alert } from 'react-bootstrap';
+import { Container, Row, Col, Button, Card, Badge, Alert, Form, InputGroup } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import CreatePost from './CreatePost'
 
 
 const AllPosts = (props) => {
   const [postResults, setPostResults] = useState([]);
-  const [createPost, setCreatePost] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
-  const { token, postId, setPostId } = props;
+  const { token, setPostId } = props;
 
   const filteredPosts = postResults.filter(post => postMatches(post, searchTerm));
   const postsToDisplay = searchTerm.length ? filteredPosts : postResults;
   
-  function postMatches(post, text) {
 
+  function postMatches(post, searchTerm) {
+    if (post.title === searchTerm) {
+      return true;
+    } else if (post.description === searchTerm) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
-
+  async function handleSubmit(event) {
+    event.preventDefault()
   };
   
   useEffect(() => {
@@ -34,46 +42,41 @@ const AllPosts = (props) => {
     getPosts()
   }, [postResults, token])
 
-  useEffect(() => {
-    console.log(postId)
-  }, [postId])
-
   return (
     <Fragment>
-      <h1 style={{textAlign: "center"}}>TEST</h1>
-
-
-      <Container fluid> 
-        <br/>
-        <Row>
-          <Col>
-            <h1>Test</h1>
-          </Col>
-        </Row>
-        <br />
-
-        <Row className="createPostButton">
-          <Col>
-            {token && !createPost && (
-            <Button id="newPostButton"size="lg" variant="outline-success" type="submit" onClick={()=> setCreatePost(true)}>Create New Post</Button>
-            )}
-          </Col>
-        </Row>
-
-        <Row>
-          <Col>
-            {token && createPost && (
-              <CreatePost 
-                token={token} 
-                fetchPosts={fetchPosts} 
-                setPostResults={setPostResults} 
-                setCreatePost={setCreatePost}
-              />
-            )}
-          </Col>
-        </Row>
-        <br />
-        
+      <br />
+      <Container>
+        <Form onSubmit={handleSubmit}>
+            <Row className="justify-content-md-center">
+              <Col xs={7}>
+                <Form.Group className="mb-4" controlId="formSearch">
+                  <InputGroup>
+                    <Form.Control 
+                      type="text" 
+                      placeholder="Enter search term..."
+                      onChange={(event) => setSearchTerm(event.target.value)}
+                      value={searchTerm}
+                    />
+                    <Button 
+                      variant="outline-danger"
+                      onClick={() => setSearchTerm('')}
+                    >
+                      X
+                    </Button>
+                  </InputGroup> 
+                <Form.Text className="text-muted">
+                  Clear contents of search box to show all posts.
+                </Form.Text>
+              </Form.Group>
+            </Col>
+            <Col xs={1}>
+              <Button type="submit" variant="primary" className="ps-4 pe-4">Search</Button>
+            </Col>
+          </Row>
+        </Form>
+      </Container>
+       
+      <Container fluid>      
         {postsToDisplay && postsToDisplay.map((post) => {
           return ( 
             <Fragment key={post._id}>
