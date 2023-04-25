@@ -23,15 +23,13 @@ function EditPost(props) {
     }
   };
  
- function getSinglePost() {
-  singlePostResult.filter(post => post._id === postId).map((post) => setSinglePost(post));
-  console.log(singlePost)
- };
- 
   useEffect(() => {
+    function getSinglePost() {
+      singlePostResult.filter(post => post._id === postId).map((post) => setSinglePost(post));
+    };
     getSinglePost()
- }, []);
-  
+  }, [postId, singlePost, singlePostResult]);
+
   return (
     <Fragment>
       <form onSubmit={handleSubmit}>
