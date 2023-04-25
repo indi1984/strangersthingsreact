@@ -26,9 +26,12 @@ function EditPost(props) {
   useEffect(() => {
     function getSinglePost() {
       singlePostResult.filter(post => post._id === postId).map((post) => setSinglePost(post));
+      setTitle(singlePost.title);
+      setDescription(singlePost.description);
+      setPrice(singlePost.price);
     };
     getSinglePost()
-  }, [postId, singlePost, singlePostResult]);
+  }, []);
 
   return (
     <Fragment>
@@ -71,7 +74,6 @@ function EditPost(props) {
               <Form.Group className="mt-3" controlId="formBasicCheckbox">
                 <Form.Check 
                   type="checkbox"
-                  placeholder={singlePost.willDeliver}
                   value={willDeliver} 
                   label="Willing to deliver?"
                   onChange={(event)=> {setWillDeliver(event.target.checked)}}
