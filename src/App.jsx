@@ -60,7 +60,7 @@ function App() {
             postId={postId}
           />} 
         />
-        <Route path="*" element={<Navigate to="/allposts" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       )}
 
