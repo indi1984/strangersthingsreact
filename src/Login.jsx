@@ -5,8 +5,9 @@ import { registeredUser } from './ajax-requests/requests';
 
 
 function Login(props) {
-  const { setToken, username, setUsername } = props;
+  const { setToken } = props;
   const [ password, setPassword ] = useState('');
+    const [ username, setUsername ] = useState('');
   
   async function handleSubmit(event) {
     event.preventDefault();

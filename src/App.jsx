@@ -16,7 +16,6 @@ function App() {
   const [ token, setToken ] = useState(false);  
   const [ postId, setPostId ] = useState("");
   const [ myPostResults, setMyPostResults ] = useState([]);
-  const [ username, setUsername ] = useState('');
 
   function tokenCheck() {
     if (window.localStorage.getItem('token')) {
@@ -38,7 +37,6 @@ function App() {
           <AllPosts token={token} 
             postId={postId} 
             setPostId={setPostId}
-            setUsername={setUsername}
           />} 
         />
         <Route path="/myposts" element={
@@ -46,7 +44,6 @@ function App() {
             token={token} 
             postId={postId} 
             setPostId={setPostId}
-            username={username}
             myPostResults={myPostResults}
             setMyPostResults={setMyPostResults}
           />} 
@@ -56,7 +53,6 @@ function App() {
             token={token} 
             postId={postId} 
             setPostId={setPostId}
-            username={username}
             myPostResults={myPostResults}
             setMyPostResults={setMyPostResults}
           />} 
@@ -83,7 +79,7 @@ function App() {
             myPostResults={myPostResults}
           />}
         />
-        <Route path="*" element={<Navigate to="/myposts" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       )}
 
@@ -111,8 +107,6 @@ function App() {
         <Route path="/login" element={
           <Login 
             setToken={setToken}
-            setUsername={setUsername}
-            username={username}
           />}
         />
         <Route path="/SinglePost" element={
@@ -122,7 +116,7 @@ function App() {
             postId={postId}
           />} 
         />
-        <Route path="*" element={<Navigate to="/allposts" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
       )}
       <div id="gap"></div>

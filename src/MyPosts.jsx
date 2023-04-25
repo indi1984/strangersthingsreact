@@ -7,7 +7,8 @@ import CreatePost from './CreatePost'
 
 const MyPosts = (props) => {
   const [ createPost, setCreatePost ] = useState(false);
-  const { token, setPostId, myPostResults, setMyPostResults, username } = props;
+  const [ username, setUsername ] = useState('');
+  const { token, setPostId, myPostResults, setMyPostResults } = props;
    
   useEffect(() => {
     async function getPosts() {
@@ -15,6 +16,7 @@ const MyPosts = (props) => {
         const results = await myData(token);
         if (results.success) {
           setMyPostResults(results.data.posts);
+          setUsername(results.data.username);
         }
       } catch (error) {
         console.error(`An error has occurred: ${error}`);
