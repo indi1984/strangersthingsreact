@@ -35,7 +35,7 @@ const AllPosts = (props) => {
     try {
       const results = await fetchPosts(token);
       if (results.success) {
-        setPostResults(results.data.posts)
+        setPostResults(results.data.posts);
       }
     } catch (error) {
       console.error(`An error has occurred: ${error}`);

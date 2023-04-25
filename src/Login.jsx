@@ -5,8 +5,7 @@ import { registeredUser } from './ajax-requests/requests';
 
 
 function Login(props) {
-  const { setToken } = props;
-  const [ username, setUsername ] = useState('');
+  const { setToken, username, setUsername } = props;
   const [ password, setPassword ] = useState('');
   
   async function handleSubmit(event) {
@@ -15,7 +14,7 @@ function Login(props) {
     const results = await registeredUser(user);
     if (results.success) {
       setToken(results.data.token);
-      window.localStorage.setItem("token", results.data.token) 
+      window.localStorage.setItem("token", results.data.token)
     } 
   };
   

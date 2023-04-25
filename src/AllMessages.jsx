@@ -9,7 +9,7 @@ const AllMessages = (props) => {
   return (
       <Container fluid>
         
-        {myPostResults && myPostResults.filter(post => post.messages.length > 0).map((post) => {
+        {myPostResults.filter(post => post.messages.length > 0 & post.active).map((post) => {
           return ( 
             <Fragment key={post._id}>
               <div id="gap"></div>

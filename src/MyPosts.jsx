@@ -7,7 +7,7 @@ import CreatePost from './CreatePost'
 
 const MyPosts = (props) => {
   const [ createPost, setCreatePost ] = useState(false);
-  const { token, setPostId, myPostResults, setMyPostResults } = props;
+  const { token, setPostId, myPostResults, setMyPostResults, username } = props;
    
   useEffect(() => {
     async function getPosts() {
@@ -26,6 +26,12 @@ const MyPosts = (props) => {
   return (
     <Fragment>
       <Container fluid>
+        <br />
+        <Row>
+          <Col>
+          <h3>Welcome {username}</h3>
+          </Col>
+        </Row>
         <br />
         <Row>
           <Col>
