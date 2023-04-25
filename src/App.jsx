@@ -83,7 +83,7 @@ function App() {
             myPostResults={myPostResults}
           />}
         />
-        <Route path="*" element={<Navigate to="/myposts" />} /> 
+        <Route path="*" element={<Navigate to="/myposts" />} />
       </Routes>
       )}
 
