@@ -13,7 +13,7 @@ function NavigationBar(props) {
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             {!token && (
-            <LinkContainer to="/allposts">
+            <LinkContainer to="/">
               <Nav.Link>
                 Home
               </Nav.Link>
