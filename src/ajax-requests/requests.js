@@ -52,7 +52,7 @@ export const fetchPosts = async (token) => {
     const data = await response.json();
     return data;
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -84,7 +84,6 @@ export const makePost = async (post, token) => {
       })
     });
     const result = await response.json();
-    console.log(result);
     return result
   } catch (err) {
     console.error(err);
@@ -101,7 +100,6 @@ export const deletePost = async (postId, token) => {
         }
       });
       const result = await response.json();
-      console.log(result);
       return result
     } catch (err) {
       console.error(err);
@@ -123,7 +121,6 @@ export const postMessage = async (postId, token, message) => {
         })
       });
       const result = await response.json();
-      console.log(result);
       return result
     } catch (err) {
       console.error(err);
@@ -143,7 +140,6 @@ export const updatePost = async (postId, token, post) => {
         })
       });
       const result = await response.json();
-      console.log(result);
       return result
     } catch (err) {
       console.error(err);

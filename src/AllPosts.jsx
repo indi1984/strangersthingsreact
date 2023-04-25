@@ -12,7 +12,6 @@ const AllPosts = (props) => {
   const postsToDisplay = searchTerm.length ? filteredPosts : postResults; 
 
   function postMatches(post, text) {
-    console.log(text)
     if (
         post.description.toLowerCase().includes(text) 
         || post.title.toLowerCase().includes(text) 

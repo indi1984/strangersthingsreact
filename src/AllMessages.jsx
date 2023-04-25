@@ -5,7 +5,6 @@ import { LinkContainer } from 'react-router-bootstrap';
 
 const AllMessages = (props) => {
   const { myPostResults, setPostId } = props;
-  console.log(myPostResults)
 
   return (
       <Container fluid>

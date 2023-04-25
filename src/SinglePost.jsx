@@ -16,7 +16,6 @@ const SinglePost = (props) => {
   async function handleSubmit(event) {
     event.preventDefault();
     await postMessage(postId, token, message);
-    console.log(postMessage);
     setSendMessage(false);
   };
 
