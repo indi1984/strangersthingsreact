@@ -32,39 +32,6 @@ function App() {
     <div className="App">
       <NavigationBar token={token} setToken={setToken}/>
       
-      {!token && (
-      <Routes>
-        <Route path="/allposts" element={
-          <AllPosts 
-            setToken={setToken} 
-            setPostId={setPostId} 
-            postId={postId}
-          />} 
-        />
-        <Route path="/register" element={
-          <Register 
-            setToken={setToken}
-          />} 
-        />
-        <Route path="/login" element={
-          <Login 
-            setToken={setToken}
-            setUsername={setUsername}
-            username={username}
-          />}
-        />
-        <Route path="/SinglePost" element={
-          <SinglePost 
-            setToken={setToken} 
-            setPostId={setPostId}  
-            postId={postId}
-          />} 
-        />
-        <Route path="/" element={<Navigate to="/allposts" />} />
-        <Route path="*" element={<Navigate to="/allposts" />} />
-      </Routes>
-      )}
-
       {token && (
       <Routes>
         <Route path="/allposts" element={
@@ -75,6 +42,16 @@ function App() {
           />} 
         />
         <Route path="/myposts" element={
+          <MyPosts 
+            token={token} 
+            postId={postId} 
+            setPostId={setPostId}
+            username={username}
+            myPostResults={myPostResults}
+            setMyPostResults={setMyPostResults}
+          />} 
+        />
+        <Route path="/" element={
           <MyPosts 
             token={token} 
             postId={postId} 
@@ -105,8 +82,47 @@ function App() {
             setPostId={setPostId}
             myPostResults={myPostResults}
           />}
-        /> 
-        <Route path="*" element={<Navigate to="/myposts" />} />
+        />
+        <Route path="*" element={<Navigate to="/myposts" />} /> 
+      </Routes>
+      )}
+
+      {!token && (
+      <Routes>
+        <Route path="/allposts" element={
+          <AllPosts 
+            setToken={setToken} 
+            setPostId={setPostId} 
+            postId={postId}
+          />} 
+        />
+        <Route path="/" element={
+          <AllPosts 
+            setToken={setToken} 
+            setPostId={setPostId} 
+            postId={postId}
+          />} 
+        />
+        <Route path="/register" element={
+          <Register 
+            setToken={setToken}
+          />} 
+        />
+        <Route path="/login" element={
+          <Login 
+            setToken={setToken}
+            setUsername={setUsername}
+            username={username}
+          />}
+        />
+        <Route path="/SinglePost" element={
+          <SinglePost 
+            setToken={setToken} 
+            setPostId={setPostId}  
+            postId={postId}
+          />} 
+        />
+        <Route path="*" element={<Navigate to="/allposts" />} />
       </Routes>
       )}
       <div id="gap"></div>
