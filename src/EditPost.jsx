@@ -9,7 +9,7 @@ function EditPost(props) {
   const [ title, setTitle ] = useState('');
   const [ description, setDescription ] = useState('');
   const [ price, setPrice ] = useState('');
-  const [ willDeliver, setWillDeliver ] = useState(false);
+  const [ willDeliver, setWillDeliver ] = useState(true);
   const [ singlePost, setSinglePost ] = useState([]);
   
   async function handleSubmit(event) {
@@ -29,6 +29,7 @@ function EditPost(props) {
       setTitle(singlePost.title);
       setDescription(singlePost.description);
       setPrice(singlePost.price);
+      setWillDeliver(singlePost.willDeliver);
     };
     getSinglePost()
   }, []);
@@ -74,9 +75,9 @@ function EditPost(props) {
               <Form.Group className="mt-3" controlId="formBasicCheckbox">
                 <Form.Check 
                   type="checkbox"
-                  value={willDeliver} 
+                  defaultChecked={singlePost.willDeliver}
                   label="Willing to deliver?"
-                  onChange={(event)=> {setWillDeliver(event.target.checked)}}
+                  onClick={(event)=> {setWillDeliver(event.target.checked)}}
                 />
               </Form.Group>
             </Col>
