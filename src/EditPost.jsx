@@ -9,7 +9,7 @@ function EditPost(props) {
   const [ title, setTitle ] = useState('');
   const [ description, setDescription ] = useState('');
   const [ price, setPrice ] = useState('');
-  const [ willDeliver, setWillDeliver ] = useState(true);
+  const [ willDeliver, setWillDeliver ] = useState(false);
   const [ singlePost, setSinglePost ] = useState([]);
   
   async function handleSubmit(event) {
