@@ -76,6 +76,8 @@ const SinglePost = (props) => {
                           <Card.Title>{post.title} <Badge style={{fontSize: 12}} id="username-badge" pill="true" className="mb-3" bg="success" text="light">{post.author.username}</Badge></Card.Title>
                           <Card.Text>{post.description}</Card.Text>
                           <Card.Text>{post.price}</Card.Text>
+                          
+                          {!editPost &&
                           <Button 
                             variant="outline-primary" 
                             className="float-end"
@@ -87,7 +89,8 @@ const SinglePost = (props) => {
                             }}
                           >
                             Edit Post
-                          </Button>
+                          </Button>}
+       
                           <LinkContainer to="/myposts">
                             <Button variant="outline-danger" size="sm" className="float-end me-4 mt-1" onClick={()=> deletePost(post._id, token)}>Delete Post</Button>
                           </LinkContainer>
